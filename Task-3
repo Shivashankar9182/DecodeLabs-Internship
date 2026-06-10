@@ -1,1 +1,39 @@
+create database project3;
+use project3;
 
+
+CREATE TABLE sales_data (
+    OrderID VARCHAR(50),
+    Date DATE,
+    CustomerID VARCHAR(50),
+    Product VARCHAR(100),
+    Quantity INT,
+    UnitPrice DECIMAL(10, 2),
+    ShippingAddress VARCHAR(255),
+    PaymentMethod VARCHAR(50),
+    OrderStatus VARCHAR(50),
+    TrackingNumber VARCHAR(50),
+    ItemsInCart INT,
+    CouponCode VARCHAR(50),
+    ReferralSource VARCHAR(50),
+    TotalPrice DECIMAL(10, 2)
+);
+
+select * from sales_data;
+
+SELECT *
+FROM sales_data
+WHERE OrderStatus = 'Delivered';
+
+SELECT OrderID, Product, TotalPrice
+FROM sales_data
+ORDER BY TotalPrice DESC;
+
+SELECT COUNT(*) AS TotalOrders
+FROM sales_data;
+
+SELECT Product,
+       SUM(TotalPrice) AS Sales
+FROM sales_data
+GROUP BY Product
+ORDER BY Sales DESC;
